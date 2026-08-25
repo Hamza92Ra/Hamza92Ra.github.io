@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamza Raddi — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1013;
+    --surface:#16191E;
+    --border:#262A31;
+    --text:#F2F1EE;
+    --muted:#9A9CA3;
+    --accent:#D98E5C;
+    --display:'Manrope', sans-serif;
+    --body:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--body); line-height:1.65;
+  }
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(14,16,19,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  nav .logo{font-family:var(--display); font-weight:800; font-size:16px;}
+  nav ul{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  nav a{text-decoration:none; color:var(--muted); font-size:14px; font-weight:500;}
+  nav a:hover{color:var(--text);}
+
+  header.hero{padding:100px 0 80px;}
+  .hero .wrap{display:flex; align-items:center; gap:48px;}
+  .hero-text{flex:1; min-width:0;}
+  .hero-photo{flex:0 0 auto;}
+  .hero-photo img{
+    width:168px; height:168px; border-radius:50%;
+    object-fit:cover; border:3px solid var(--border);
+  }
+  .kicker{color:var(--accent); font-size:14px; font-weight:600; letter-spacing:.03em; margin-bottom:14px;}
+  h1{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(34px, 6vw, 52px);
+    line-height:1.1; margin:0 0 18px;
+  }
+  .lede{font-size:18px; color:var(--muted); max-width:520px; margin:0 0 32px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+
+  @media (max-width:640px){
+    .hero .wrap{flex-direction:column-reverse; text-align:center; gap:28px;}
+    .lede{margin-left:auto; margin-right:auto;}
+    .cta-row{justify-content:center;}
+  }
+  .btn{
+    display:inline-block; padding:12px 22px; border-radius:8px;
+    font-size:14px; font-weight:600; text-decoration:none;
+  }
+  .btn.primary{background:var(--accent); color:#1A130C;}
+  .btn.secondary{border:1px solid var(--border); color:var(--text);}
+
+  section{padding:64px 0; border-top:1px solid var(--border);}
+  h2{font-family:var(--display); font-size:24px; font-weight:700; margin:0 0 20px;}
+  .about p{color:var(--muted); font-size:16px; max-width:600px;}
+
+  .skills{display:flex; flex-wrap:wrap; gap:10px;}
+  .skills span{
+    background:var(--surface); border:1px solid var(--border);
+    padding:7px 14px; border-radius:20px; font-size:13px; color:var(--text);
+  }
+
+  .projects{display:grid; gap:20px;}
+  .project{
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:24px;
+  }
+  .project h3{font-family:var(--display); font-size:18px; margin:0 0 8px;}
+  .project p{color:var(--muted); font-size:14.5px; margin:0 0 14px;}
+  .project a{font-size:14px; color:var(--accent); text-decoration:none; font-weight:600;}
+  .project a:hover{text-decoration:underline;}
+  .project-links{display:flex; gap:18px; margin-top:2px;}
+  .project-image{
+    width:100%; border-radius:8px; border:1px solid var(--border);
+    display:block; margin-bottom:16px; object-fit:cover; aspect-ratio:16/9;
+  }
+
+  .cert{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:18px 22px;
+  }
+  .cert-info h3{font-family:var(--display); font-size:15.5px; margin:0 0 4px;}
+  .cert-info p{margin:0; color:var(--muted); font-size:13px;}
+  .cert a{
+    font-size:13px; color:var(--accent); text-decoration:none; font-weight:600;
+    border:1px solid var(--border); padding:8px 14px; border-radius:8px; white-space:nowrap;
+  }
+  .cert a:hover{border-color:var(--accent);}
+
+  .contact p{color:var(--muted); max-width:520px;}
+  .contact-links{display:flex; gap:20px; margin-top:20px; flex-wrap:wrap;}
+  .contact-links a{
+    font-size:14px; font-weight:600; text-decoration:none;
+    border-bottom:1px solid var(--border); padding-bottom:2px;
+  }
+  .contact-links a:hover{border-color:var(--accent); color:var(--accent);}
+
+  footer{padding:40px 0; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border);}
+
+  @media (max-width:600px){
+    nav ul{gap:16px;}
+    header.hero{padding:70px 0 60px;}
+  }
+  nav a{text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; transition:color .25s ease;}
+
+.btn{display:inline-block; padding:12px 22px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:transform .25s ease, opacity .25s ease, background .25s ease;}
+.btn:hover{transform:translateY(-2px); opacity:.9;}
+
+.hero-photo img{width:168px; height:168px; border-radius:50%; object-fit:cover; border:3px solid var(--border); transition:transform .4s ease, border-color .4s ease;}
+.hero-photo img:hover{transform:scale(1.04); border-color:var(--accent);}
+
+.skills span{background:var(--surface); border:1px solid var(--border); padding:7px 14px; border-radius:20px; font-size:13px; color:var(--text); transition:border-color .25s ease, transform .25s ease;}
+.skills span:hover{border-color:var(--accent); transform:translateY(-2px);}
+
+.project{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color .3s ease, transform .3s ease;}
+.project:hover{border-color:var(--accent); transform:translateY(-3px);}
+
+.project a{font-size:14px; color:var(--accent); text-decoration:none; font-weight:600; transition:opacity .2s ease;}
+
+.cert{display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 22px; transition:border-color .3s ease, transform .3s ease;}
+.cert:hover{border-color:var(--accent); transform:translateY(-3px);}
+
+.cert a{font-size:13px; color:var(--accent); text-decoration:none; font-weight:600; border:1px solid var(--border); padding:8px 14px; border-radius:8px; white-space:nowrap; transition:border-color .25s ease, background .25s ease;}
+
+.contact-links a{font-size:14px; font-weight:600; text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:2px; transition:color .25s ease, border-color .25s ease;}
+  section{padding:64px 0; border-top:1px solid var(--border); opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+section.visible{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Hamza Raddi</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="kicker">Student · Full-Stack Developer</div>
+      <h1>Hi, I'm Hamza.</h1>
+      <p class="lede">Third-year student at FSTM, building full-stack projects and always learning something new.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="HERO_PHOTO_PLACEHOLDER" alt="Hamza Ra">
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about">
+    <h2>About me</h2>
+    <p>I'm 21 years old and a student at FSTM, heading into my third year next year. I speak three languages — French, English, and Arabic. I'm a full-stack developer with experience in C++, Assembly, C, and Python, along with MySQL for database work.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>C++</span><span>C</span><span>Python</span>
+      <span>Assembly</span><span>PHP</span><span>MySQL</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <img class="project-image" src="POUFS_KILIM_IMAGE_PLACEHOLDER" alt="Poufs Kilim storefront preview">
+        <h3>Poufs Kilim — Handmade Moroccan Rugs & Poufs</h3>
+        <p>An e-commerce site showcasing handwoven Moroccan rugs and poufs sourced from artisan cooperatives, with a bilingual storefront and a warm, editorial visual style.</p>
+        <div class="project-links">
+          <a href="https://poufs-kilim.vercel.app/fr" target="_blank" rel="noopener">Live demo →</a>
+          <a href="https://github.com/Hamza92Ra/Poufs-Kilim" target="_blank" rel="noopener">View code on GitHub →</a>
+        </div>
+      </div>
+      <div class="project">
+        <h3>Dropshipping Stack</h3>
+        <p>A full-stack PHP platform that helps beginners start and grow a dropshipping business — includes an admin dashboard, tool listings, search, and affiliate link tracking.</p>
+        <a href="https://github.com/Hamza92Ra/dropshipping-stack" target="_blank" rel="noopener">View code on GitHub →</a>
+      </div>
+      <div class="project">
+<h3>ZAYANE — Djellabas & Tapis Marocains</h3>
+<p>An e-commerce storefront for traditional Moroccan djellabas and handmade tapis, with a clean product catalog and a modern shopping experience.</p>
+<div class="project-links">
+<a href="https://zayane.vercel.app/" target="_blank" rel="noopener">Live demo →</a>
+<a href="https://github.com/Hamza92Ra/ZAYANE" target="_blank" rel="noopener">View code on GitHub →</a>
+</div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <h2>Certifications</h2>
+    <div class="cert">
+      <div class="cert-info">
+        <h3>Responsive Web Design</h3>
+        <p>freeCodeCamp</p>
+      </div>
+      <a href="https://www.freecodecamp.org/certification/hamzaraddi/responsive-web-design" target="_blank" rel="noopener">View certificate →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <h2>Get in touch</h2>
+    <p>Interested in working together, or just want to say hi? Reach out — I'm always happy to chat.</p>
+    <div class="contact-links">
+      <a href="mailto:hamzaraddi92@gmail.com">Mail me</a>
+      <a href="https://github.com/Hamza92Ra" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/hamza-ra-bb9232317" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/hamzaraddi" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/search/people/?q=Hamza%20Ra" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/212673046307" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Hamza Raddi. All rights reserved.</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+  <script>
+const revealEls = document.querySelectorAll('section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</html>
