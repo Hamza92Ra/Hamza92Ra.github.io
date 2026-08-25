@@ -18,6 +18,7 @@
     --body:'Inter', sans-serif;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0; background:var(--bg); color:var(--text);
     font-family:var(--body); line-height:1.65;
@@ -113,6 +114,30 @@
     nav ul{gap:16px;}
     header.hero{padding:70px 0 60px;}
   }
+  nav a{text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; transition:color .25s ease;}
+
+.btn{display:inline-block; padding:12px 22px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:transform .25s ease, opacity .25s ease, background .25s ease;}
+.btn:hover{transform:translateY(-2px); opacity:.9;}
+
+.hero-photo img{width:168px; height:168px; border-radius:50%; object-fit:cover; border:3px solid var(--border); transition:transform .4s ease, border-color .4s ease;}
+.hero-photo img:hover{transform:scale(1.04); border-color:var(--accent);}
+
+.skills span{background:var(--surface); border:1px solid var(--border); padding:7px 14px; border-radius:20px; font-size:13px; color:var(--text); transition:border-color .25s ease, transform .25s ease;}
+.skills span:hover{border-color:var(--accent); transform:translateY(-2px);}
+
+.project{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color .3s ease, transform .3s ease;}
+.project:hover{border-color:var(--accent); transform:translateY(-3px);}
+
+.project a{font-size:14px; color:var(--accent); text-decoration:none; font-weight:600; transition:opacity .2s ease;}
+
+.cert{display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 22px; transition:border-color .3s ease, transform .3s ease;}
+.cert:hover{border-color:var(--accent); transform:translateY(-3px);}
+
+.cert a{font-size:13px; color:var(--accent); text-decoration:none; font-weight:600; border:1px solid var(--border); padding:8px 14px; border-radius:8px; white-space:nowrap; transition:border-color .25s ease, background .25s ease;}
+
+.contact-links a{font-size:14px; font-weight:600; text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:2px; transition:color .25s ease, border-color .25s ease;}
+  section{padding:64px 0; border-top:1px solid var(--border); opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+section.visible{opacity:1; transform:translateY(0);}
 </style>
 </head>
 <body>
@@ -217,4 +242,16 @@
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 </body>
+  <script>
+const revealEls = document.querySelectorAll('section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+</script>
 </html>
